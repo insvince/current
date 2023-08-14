@@ -1,36 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="./style.css" />
+        <link rel="shortcut icon" href="./clock.jpg" type="image/x-icon" />
+        <title>Time Now</title>
+        <script src="https://cdn.jsdelivr.net/npm/luxon@3.3.0/build/global/luxon.min.js"></script>
+    </head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style.css">
-    <link rel="shortcut icon" href="./clock.jpg" type="image/x-icon">
-    <title>Time Now</title>
-    <script src="https://cdn.jsdelivr.net/npm/luxon@3.3.0/build/global/luxon.min.js"></script>
-</head>
-
-<body>
-    <div class="block">
-        <div class="title">time now</div>
-        <div class="background">
-            <output data-timezone="Asia/Ho_Chi_Minh">00:00:00</output>
+    <body>
+        <div class="block">
+            <div class="title">time now</div>
+            <div class="background">
+                <output data-timezone="Asia/Ho_Chi_Minh">00:00:00</output>
+            </div>
         </div>
-    </div>
-    <script>
-        const locate = document.querySelector('output')
-        const timeZone = locate.getAttribute('data-timezone')
+        <script>
+            const locate = document.querySelector('output')
+            const timeZone = locate.getAttribute('data-timezone')
 
-        const updateTime= () => {
-            const now = luxon.DateTime.now().setZone(timeZone)
+            const updateTime = () => {
+                const now = luxon.DateTime.now().setZone(timeZone)
 
-            locate.innerHTML = now.toFormat("HH:mm:ss")
-        }
+                locate.innerHTML = now.toFormat('HH:mm:ss')
+            }
 
-        updateTime()
+            updateTime()
 
-        setInterval(updateTime, 1000)
-    </script>
-</body>
+            setInterval(updateTime, 1000)
+        </script>
+    </body>
 </html>

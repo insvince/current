@@ -1,0 +1,12 @@
+{
+    "prettier.printWidth": 80,
+    "prettier.tabWidth": 4,
+    "prettier.singleQuote": true,
+    "prettier.trailingComma": "all",
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "prettier.quoteProps": "as-needed",
+    "prettier.arrowParens": "avoid",
+    "files.autoSave": "onWindowChange",
+    "editor.formatOnSave": true,
+    "prettier.semi": false
+}
