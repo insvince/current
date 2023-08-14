@@ -1,28 +1,28 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-body{
+body {
     width: 100vw;
     height: 100vh;
 
     background-color: black;
 }
 
-.block{
+.block {
     height: 100%;
     color: whitesmoke;
     user-select: none;
     cursor: grab;
 }
 
-.title{
+.title {
     display: flex;
     align-items: center;
     justify-content: center;
-    
+
     height: 40%;
     width: 100%;
 
@@ -33,7 +33,13 @@ body{
     text-transform: uppercase;
 }
 
-.background{
+.locate {
+    text-align: center;
+    font-style: italic;
+    font-size: 1.5rem;
+}
+
+.background {
     display: flex;
     flex: 1;
     justify-content: center;
@@ -43,4 +49,3 @@ body{
     font-size: 12rem;
     font-weight: bold;
 }
-
