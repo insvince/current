@@ -17,6 +17,19 @@
             <output data-timezone="Asia/Ho_Chi_Minh">00:00:00</output>
         </div>
     </div>
-    <script src="./javascript.js"></script>
+    <script>
+        const locate = document.querySelector('output')
+        const timeZone = locate.getAttribute('data-timezone')
+
+        const updateTime= () => {
+            const now = luxon.DateTime.now().setZone(timeZone)
+
+            locate.innerHTML = now.toFormat("HH:mm:ss")
+        }
+
+        updateTime()
+
+        setInterval(updateTime, 1000)
+    </script>
 </body>
 </html>

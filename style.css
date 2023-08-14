@@ -14,6 +14,8 @@ body{
 .block{
     height: 100%;
     color: whitesmoke;
+    user-select: none;
+    cursor: grab;
 }
 
 .title{
