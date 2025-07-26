@@ -1,36 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="./style.css" />
-        <link rel="shortcut icon" href="/clock.png" type="image/x-icon" />
-        <title>Time Now</title>
-        <script src="https://cdn.jsdelivr.net/npm/luxon@3.3.0/build/global/luxon.min.js"></script>
-    </head>
 
-    <body>
-        <div class="block">
-            <div class="title">time now</div>
-            <div class="locate">Ho Chi Minh City</div>
-            <div class="background">
-                <output data-timezone="Asia/Ho_Chi_Minh">00:00:00</output>
-            </div>
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="shortcut icon" href="./clock.png" type="image/x-icon" />
+    <title>Now</title>
+    <script src="https://cdn.jsdelivr.net/npm/luxon@3.3.0/build/global/luxon.min.js"></script>
+</head>
+
+<body>
+    <div class="block">
+        <div class="title">time now</div>
+        <div class="custom-select-wrapper">
+            <select id="city">
+                <option value="Asia/Ho_Chi_Minh">Ho Chi Minh City</option>
+                <option value="Asia/Tokyo">Tokyo</option>
+                <option value="America/New_York">New York</option>
+                <option value="Europe/London">London</option>
+            </select>
+            <div class="locate" id="locationLabel">Ho Chi Minh City</div>
         </div>
-        <script>
-            const locate = document.querySelector('output')
-            const timeZone = locate.getAttribute('data-timezone')
+        <output id="clock">00:00:00</output>
+    </div>
 
-            const updateTime = () => {
-                const now = luxon.DateTime.now().setZone(timeZone)
+    <script>
+        const locate = document.getElementById('clock');
+        const select = document.getElementById('city');
+        const locationLabel = document.getElementById('locationLabel');
 
-                locate.innerHTML = now.toFormat('HH:mm:ss')
+        const updateTime = () => {
+            const timeZone = select.value;
+            const now = luxon.DateTime.now().setZone(timeZone);
+            locate.innerHTML = now.toFormat('HH:mm:ss');
+
+            const selectedText = select.options[select.selectedIndex].text;
+            locationLabel.innerText = selectedText;
+        };
+
+        const initializeClock = () => {
+            const localTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+            const foundOption = Array.from(select.options).find(
+                option => option.value === localTimeZone
+            );
+            if (foundOption) {
+                select.value = localTimeZone;
             }
+            updateTime();
+            setInterval(updateTime, 1000);
+        };
 
-            updateTime()
+        fetch('./timezones_with_gmt.json')
+            .then(res => res.json())
+            .then(data => {
+                data.forEach(tz => {
+                    const option = document.createElement('option');
+                    option.value = tz.timezone;
+                    option.textContent = `${tz.timezone} (${tz.offset})`;
+                    select.appendChild(option);
+                });
 
-            setInterval(updateTime, 1000)
-        </script>
-    </body>
+                initializeClock();
+            })
+            .catch(err => {
+                locationLabel.textContent = "Failed to load timezones!";
+                console.error('Error loading timezones:', err);
+            });
+
+        select.addEventListener('change', updateTime);
+    </script>
+
+</body>
+
 </html>
