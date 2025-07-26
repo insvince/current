@@ -16,6 +16,7 @@ body {
     color: whitesmoke;
     user-select: none;
     cursor: grab;
+    transition: 0.75s font-size;
 }
 
 .title {
@@ -25,18 +26,17 @@ body {
 
     height: 40%;
     width: 100%;
-
-    font-size: 5rem;
     font-weight: bold;
 
     text-align: center;
     text-transform: uppercase;
+    transition: 0.75s font-size;
 }
 
 .locate {
     text-align: center;
     font-style: italic;
-    font-size: 1.5rem;
+    transition: 0.75s font-size;
 }
 
 .background {
@@ -45,7 +45,81 @@ body {
     justify-content: center;
 
     column-gap: 1rem;
-
-    font-size: 12rem;
     font-weight: bold;
+    transition: 0.75s font-size;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 599px) {
+    .background {
+        font-size: 4rem
+    }
+
+    .title {
+        font-size: 2.5rem;
+    }
+
+    .locate {
+        font-size: 1rem;
+    }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+    .background {
+        font-size: 6rem
+    }
+
+    .title {
+        font-size: 3.5rem;
+    }
+
+    .locate {
+        font-size: 1.5rem;
+    }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    .background {
+        font-size: 7rem
+    }
+
+    .title {
+        font-size: 4.5rem;
+    }
+
+    .locate {
+        font-size: 2rem;
+    }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    .background {
+        font-size: 10rem
+    }
+
+    .title {
+        font-size: 6.5rem;
+    }
+
+    .locate {
+        font-size: 2.5rem;
+    }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+    .background {
+        font-size: 12rem
+    }
+
+    .title {
+        font-size: 8rem;
+    }
+
+    .locate {
+        font-size: 3rem;
+    }
 }
