@@ -159,7 +159,16 @@ body {
 
 /* Styles for portrait mode (height >= width) */
 @media (orientation: portrait) {
-    body {}
+    .title {
+        display: none;
+    }
+
+    #clock {
+        font-size: 9rem;
+        height: 100%;
+        align-items: center;
+        transform: rotate(-90deg);
+    }
 }
 
 /* Styles for landscape mode (width > height) */
