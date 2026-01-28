@@ -13,7 +13,7 @@
 
 <body>
     <div class="block">
-        <div class="title">time now</div>
+        <div class="title">gio phut giay</div>
         <div class="custom-select-wrapper">
             <select id="city"></select>
             <div class="locate" id="locationLabel"></div>
@@ -2245,6 +2245,7 @@
 
         const updateTime = () => {
             const timeZone = select.value;
+            // Near realtime
             const now = luxon.DateTime.now().setZone(timeZone);
             locate.innerHTML = now.toFormat('HH:mm:ss');
 
