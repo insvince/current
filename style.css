@@ -83,15 +83,21 @@ body {
 
 @media only screen and (max-width: 599px) {
     #clock {
-        font-size: 4rem
+        font-size: 7rem;
     }
 
     .title {
-        font-size: 2.5rem;
+        font-size: 3.5rem;
+        text-transform: uppercase;
     }
 
     .locate {
         font-size: 1rem;
+        display: none;
+    }
+
+    .custom-select-wrapper {
+        display: none;
     }
 }
 
@@ -148,5 +154,23 @@ body {
 
     .locate {
         font-size: 3rem;
+    }
+}
+
+/* Styles for portrait mode (height >= width) */
+@media (orientation: portrait) {
+    body {}
+}
+
+/* Styles for landscape mode (width > height) */
+@media (orientation: landscape) and (max-width: 1200px) {
+    .title {
+        display: none;
+    }
+
+    #clock {
+        font-size: 9rem;
+        height: 100%;
+        align-items: center;
     }
 }
