@@ -82,6 +82,10 @@ body {
 }
 
 @media only screen and (max-width: 599px) {
+    .block {
+        overflow: hidden;
+    }
+
     #clock {
         font-size: 7rem;
     }
@@ -164,7 +168,7 @@ body {
     }
 
     #clock {
-        font-size: 9rem;
+        font-size: 10rem;
         height: 100%;
         align-items: center;
         transform: rotate(-90deg);
